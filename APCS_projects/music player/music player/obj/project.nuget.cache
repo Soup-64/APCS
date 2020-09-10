@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "mFcx6rrOTuyrc3HMPRkR9jx5LDS+pdmrYEod62oyoxiLBmkUW0ZQHzh1v1zRRfx7kCpoIlaNGn+pK5uAnMaC3w==",
+  "dgSpecHash": "y7kMbMpOrMm4ENGoPYOPU/NUyyMfxyJorwCnyqZKo6tEvkKM1NSQnpVsxDOpK68VMdb2aGaUsxWtNJaR33T8lQ==",
   "success": true,
-  "projectFilePath": "E:\\music player\\music player\\music player.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\Owner\\Documents\\GitHub\\APCS\\APCS_projects\\music player\\music player\\music player.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Owner\\.nuget\\packages\\taglibsharp\\2.2.0\\taglibsharp.2.2.0.nupkg.sha512"
+  ],
   "logs": []
 }
