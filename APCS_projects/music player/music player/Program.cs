@@ -18,8 +18,6 @@ namespace music_player
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Music());
-
-            
         }
     }
 }

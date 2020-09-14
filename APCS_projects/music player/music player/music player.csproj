@@ -5,10 +5,15 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>music_player</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
+    <StartupObject>music_player.Program</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="TagLibSharp" Version="2.2.0" />
+    <PackageReference Include="WMPLib" Version="1.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
