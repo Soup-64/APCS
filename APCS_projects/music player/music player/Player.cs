@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
-using System.Media;
 using System.Windows.Forms;
+using WMPLib;
 
 namespace music_player
 {
@@ -13,10 +13,14 @@ namespace music_player
             SearchOption.AllDirectories);
         private int last_sel = -1;
         private bool is_playing = false;
+        WMPLib.WindowsMediaPlayer media_Player;
+
+
 
         public Music()
         {
             InitializeComponent();
+            
         }
 
        
@@ -52,18 +56,41 @@ namespace music_player
                 Console.WriteLine(e.GetType() + "\n" + lst.SelectedIndex + "\n" + lst.Text);
                 last_sel = lst.SelectedIndex;
 
+               
+
                 if(is_playing)
                 {
                     //kill prev. song and start a new one
                     //reset slider
+                    
                 }
                 else
                 {
-                    //start song
+                    media_Player.controls.playItem()
                 }
 
             }
         }
+
+        private void Play_Btn_Click(object sender, EventArgs e)
+        {
+            if(!is_playing)
+            {
+                is_playing = true;
+                //audio play code
+            }
+        }
+
+        private void Pause_Btn_Click(object sender, EventArgs e)
+        {
+            if(is_playing)
+            {
+                is_playing = false;
+                //stop music code
+            }
+        }
+
+
 
         //slider update on un-click
 

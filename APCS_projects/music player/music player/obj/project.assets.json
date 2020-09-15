@@ -1,24 +1,25 @@
 {
   "version": 3,
   "targets": {
-    ".NETCoreApp,Version=v3.1": {
+    ".NETFramework,Version=v4.8": {
       "TagLibSharp/2.2.0": {
         "type": "package",
         "compile": {
-          "lib/netstandard2.0/TagLibSharp.dll": {}
+          "lib/net45/TagLibSharp.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/TagLibSharp.dll": {}
+          "lib/net45/TagLibSharp.dll": {}
         }
-      },
-      "WMPLib/1.0.0": {
+      }
+    },
+    ".NETFramework,Version=v4.8/win7-x86": {
+      "TagLibSharp/2.2.0": {
         "type": "package",
         "compile": {
-          "lib/_._": {}
+          "lib/net45/TagLibSharp.dll": {}
         },
         "runtime": {
-          "lib/AxInterop.WMPLib.dll": {},
-          "lib/Interop.WMPLib.dll": {}
+          "lib/net45/TagLibSharp.dll": {}
         }
       }
     }
@@ -40,26 +41,11 @@
         "taglibsharp.2.2.0.nupkg.sha512",
         "taglibsharp.nuspec"
       ]
-    },
-    "WMPLib/1.0.0": {
-      "sha512": "hhTCfENN7xrSfUG7hrd/A9YiXVMVGHAc3Hv0USe6SvpacIDxVwiBb1X3nVzELpLtewjqqFy5dsWHwImpUy3vyw==",
-      "type": "package",
-      "path": "wmplib/1.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "License/license.txt",
-        "lib/AxInterop.WMPLib.dll",
-        "lib/Interop.WMPLib.dll",
-        "wmplib.1.0.0.nupkg.sha512",
-        "wmplib.nuspec"
-      ]
     }
   },
   "projectFileDependencyGroups": {
-    ".NETCoreApp,Version=v3.1": [
-      "TagLibSharp >= 2.2.0",
-      "WMPLib >= 1.0.0"
+    ".NETFramework,Version=v4.8": [
+      "TagLibSharp >= 2.2.0"
     ]
   },
   "packageFolders": {
@@ -83,14 +69,14 @@
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "netcoreapp3.1"
+        "net48"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "netcoreapp3.1": {
+        "net48": {
           "projectReferences": {}
         }
       },
@@ -101,51 +87,20 @@
       }
     },
     "frameworks": {
-      "netcoreapp3.1": {
+      "net48": {
         "dependencies": {
           "TagLibSharp": {
             "target": "Package",
             "version": "[2.2.0, )"
-          },
-          "WMPLib": {
-            "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-            "suppressParent": "All",
-            "target": "Package",
-            "version": "[1.0.0, )"
-          }
-        },
-        "imports": [
-          "net461",
-          "net462",
-          "net47",
-          "net471",
-          "net472",
-          "net48"
-        ],
-        "assetTargetFallback": true,
-        "warn": true,
-        "frameworkReferences": {
-          "Microsoft.NETCore.App": {
-            "privateAssets": "all"
-          },
-          "Microsoft.WindowsDesktop.App.WindowsForms": {
-            "privateAssets": "none"
           }
         },
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
       }
+    },
+    "runtimes": {
+      "win7-x86": {
+        "#import": []
+      }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'WMPLib 1.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
-      "libraryId": "WMPLib",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v3.1"
-      ]
-    }
-  ]
+  }
 }
