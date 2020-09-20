@@ -48,7 +48,6 @@
             this.Song_box.Location = new System.Drawing.Point(10, 10);
             this.Song_box.Name = "Song_box";
             this.Song_box.Size = new System.Drawing.Size(238, 394);
-            this.Song_box.Sorted = true;
             this.Song_box.TabIndex = 0;
             this.Song_box.Tag = "cum";
             this.Song_box.DoubleClick += new System.EventHandler(this.Songs_DoubleClick);
@@ -118,6 +117,7 @@
             this.forward.TabIndex = 5;
             this.forward.Text = "Forward";
             this.forward.UseVisualStyleBackColor = true;
+            this.forward.Click += new System.EventHandler(this.forward_Click);
             // 
             // backward
             // 
@@ -127,6 +127,7 @@
             this.backward.TabIndex = 5;
             this.backward.Text = "Backwardw";
             this.backward.UseVisualStyleBackColor = true;
+            this.backward.Click += new System.EventHandler(this.backward_Click);
             // 
             // crnt_Song
             // 

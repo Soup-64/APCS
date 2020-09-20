@@ -2,6 +2,18 @@
   "version": 3,
   "targets": {
     ".NETFramework,Version=v4.8": {
+      "NAudio/1.10.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.Windows.Forms"
+        ],
+        "compile": {
+          "lib/net35/NAudio.dll": {}
+        },
+        "runtime": {
+          "lib/net35/NAudio.dll": {}
+        }
+      },
       "TagLibSharp/2.2.0": {
         "type": "package",
         "compile": {
@@ -13,6 +25,18 @@
       }
     },
     ".NETFramework,Version=v4.8/win7-x86": {
+      "NAudio/1.10.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.Windows.Forms"
+        ],
+        "compile": {
+          "lib/net35/NAudio.dll": {}
+        },
+        "runtime": {
+          "lib/net35/NAudio.dll": {}
+        }
+      },
       "TagLibSharp/2.2.0": {
         "type": "package",
         "compile": {
@@ -25,6 +49,26 @@
     }
   },
   "libraries": {
+    "NAudio/1.10.0": {
+      "sha512": "y6VvwSPfJhElUllkzE2FHXHAADYFGLwMPt048KlPyuUXcq4E0VEi+4hWrFd+lBsrb+Q5DvPA9w86oRTvKRO9UQ==",
+      "type": "package",
+      "path": "naudio/1.10.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net35/NAudio.dll",
+        "lib/net35/NAudio.xml",
+        "lib/netcoreapp3.0/NAudio.dll",
+        "lib/netcoreapp3.0/NAudio.xml",
+        "lib/netstandard2.0/NAudio.dll",
+        "lib/netstandard2.0/NAudio.xml",
+        "lib/uap10.0/NAudio.dll",
+        "lib/uap10.0/NAudio.pri",
+        "lib/uap10.0/NAudio.xml",
+        "naudio.1.10.0.nupkg.sha512",
+        "naudio.nuspec"
+      ]
+    },
     "TagLibSharp/2.2.0": {
       "sha512": "X8UOWeaJgHGrN3xilg3O0lqowhUSwNEiGrE8ITDd1rCn14LqGCWKgn5GX++SW4vuXBMne8+pyic6aUvOFQMRlA==",
       "type": "package",
@@ -45,6 +89,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETFramework,Version=v4.8": [
+      "NAudio >= 1.10.0",
       "TagLibSharp >= 2.2.0"
     ]
   },
@@ -89,6 +134,10 @@
     "frameworks": {
       "net48": {
         "dependencies": {
+          "NAudio": {
+            "target": "Package",
+            "version": "[1.10.0, )"
+          },
           "TagLibSharp": {
             "target": "Package",
             "version": "[2.2.0, )"

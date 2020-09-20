@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "FP3LToB8XgYXZZ8jQN5SK4gSWBlxLn51NQkLpVFjLTetk1oznaJEXOs0lJwNgjfXV3hcytPIolrQKwrgA7JgSA==",
+  "dgSpecHash": "Bxw0aaekuLbsNnlaDP+ddm9Nuj7UL+F6vaNoG/IbG9Oi/kp353VOUa81Sk5P8/pRUpSBBRCSXOlRJpBY3PQxsg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Owner\\Documents\\GitHub\\APCS\\APCS_projects\\music player\\music player\\music player.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Owner\\.nuget\\packages\\naudio\\1.10.0\\naudio.1.10.0.nupkg.sha512",
     "C:\\Users\\Owner\\.nuget\\packages\\taglibsharp\\2.2.0\\taglibsharp.2.2.0.nupkg.sha512"
   ],
   "logs": []

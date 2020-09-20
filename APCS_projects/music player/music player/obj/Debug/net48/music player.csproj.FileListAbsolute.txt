@@ -15,3 +15,5 @@ C:\Users\Owner\Documents\GitHub\APCS\APCS_projects\music player\music player\obj
 C:\Users\Owner\Documents\GitHub\APCS\APCS_projects\music player\music player\obj\Debug\net48\music player.csproj.CoreCompileInputs.cache
 C:\Users\Owner\Documents\GitHub\APCS\APCS_projects\music player\music player\bin\Debug\net48\Interop.WMPLib.dll
 C:\Users\Owner\Documents\GitHub\APCS\APCS_projects\music player\music player\obj\Debug\net48\Interop.WMPLib.dll
+C:\Users\Owner\Documents\GitHub\APCS\APCS_projects\music player\music player\bin\Debug\net48\NAudio.dll
+C:\Users\Owner\Documents\GitHub\APCS\APCS_projects\music player\music player\bin\Debug\net48\The Microsoft Sound.mp3

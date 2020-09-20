@@ -41,6 +41,10 @@
       "frameworks": {
         "net48": {
           "dependencies": {
+            "NAudio": {
+              "target": "Package",
+              "version": "[1.10.0, )"
+            },
             "TagLibSharp": {
               "target": "Package",
               "version": "[2.2.0, )"
