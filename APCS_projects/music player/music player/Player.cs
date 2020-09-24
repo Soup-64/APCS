@@ -15,14 +15,17 @@ namespace music_player
         private AudioFileReader reader;
         private readonly WaveOutEvent Wave_out = new WaveOutEvent();
         private int Current_index = -1;
-
+        private System.Timers.Timer timer = new System.Timers.Timer();
 
         
         //initialization methods
 
         public Music()
         {
+            timer.Interval = 1000;
+            timer.Elapsed += new System.Timers.ElapsedEventHandler(Update_time_seeker);
             Wave_out.PlaybackStopped += new System.EventHandler<NAudio.Wave.StoppedEventArgs>(Song_ended);
+
             InitializeComponent();
         }
 
@@ -39,7 +42,10 @@ namespace music_player
                 }
                 else
                 {
-                    Song_box.Items.Add(track.Name);
+                    
+                    track.Tag.Title = Path.GetFileName(Song_list[i]).Substring(0, Path.GetFileName(Song_list[i]).IndexOf('.'));
+                    Song_box.Items.Add(track.Tag.Title);
+                    track.Save(); //updates song metadata to include title
                 }
             }
             Song_box.EndUpdate();
@@ -92,7 +98,8 @@ namespace music_player
         private void Backward_Click(object sender, EventArgs e)
         {
             End_audio();
-            Current_index -= 1;
+            
+            Current_index = Math.Clamp(Current_index-1, 0, Song_list.Length);
             Start_audio(Current_index);
 
             Update_playing();
@@ -101,7 +108,7 @@ namespace music_player
         private void Forward_Click(object sender, EventArgs e)
         {
             End_audio();
-            Current_index += 1;
+            Current_index = Math.Clamp(Current_index + 1, 0, Song_list.Length);
             Start_audio(Current_index);
 
             Update_playing();
@@ -114,6 +121,11 @@ namespace music_player
             reader = new AudioFileReader(Song_list[index]);
             Wave_out.Init(reader);
             Wave_out.Play();
+            timer.Start();
+            ttl_time.Text = reader.TotalTime.ToString(@"mm\:ss");
+            crnt_time.Text = reader.CurrentTime.ToString(@"mm\:ss");
+            seeker.Maximum = (int)reader.TotalTime.TotalSeconds;
+            seeker.Value = 0;
         }
 
         private void End_audio()  //disposes file reader and wave device
@@ -121,27 +133,27 @@ namespace music_player
             Wave_out.Dispose();
             reader.Dispose();
             reader = null;
+            timer.Stop();
         }
 
         private void Song_ended(object sender, EventArgs e)
         {
             if (reader.Position == reader.Length)
             {
-                Console.WriteLine("ok");
-                End_audio();
-                Current_index += 1;
-                Start_audio(Current_index);
-
                 BeginInvoke(new Action(() => 
                 //I really don't know exactly what this does but it fixes a threading issue with the event interacting with the ui method
                 {
+                    Console.WriteLine("ok");
+                    End_audio();
+                    Current_index += 1;
+                    Start_audio(Current_index);
                     Update_playing();
                 }));
                 
             }
         }
         
-        //ui methods
+        //ui update methods
 
         private void Update_playing()
         {
@@ -159,10 +171,30 @@ namespace music_player
             }
         }
         
-        private void Update_time() //make event triggered by timer
+        private void Update_time_seeker(object sender, System.Timers.ElapsedEventArgs e) //make event triggered by timer
         {
+            
+            BeginInvoke(new Action(() =>
+            {
+                if (reader != null)
+                {
+                    crnt_time.Text = reader.CurrentTime.ToString(@"mm\:ss");
 
+                    if (!seeker.Capture)
+                    {
+                        seeker.Value = (int)reader.CurrentTime.TotalSeconds;
+                    }
+                }
+            }));
         }
-        //slider update on un-click
+
+        private void Move_seeker(object sender, EventArgs e)
+        {
+            if(reader != null && seeker.Value != (int)reader.CurrentTime.TotalSeconds)
+            {
+                Console.WriteLine(seeker.Value);
+                reader.Skip(seeker.Value - (int)reader.CurrentTime.TotalSeconds);
+            }
+        }
     }
 }

@@ -1,0 +1,1 @@
+C:\Users\Owner\Documents\GitHub\APCS\APCS_projects\music player\music player\obj\Debug\netcoreapp3.1\music_player.csprojAssemblyReference.cache

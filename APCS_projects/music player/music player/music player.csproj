@@ -1,10 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net48</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>music_player</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
     <StartupObject>music_player.Program</StartupObject>
+    <ApplicationIcon>Resources\clipart_info_transparent_music_note_clip_art_11563275292nsxmd5ksee_uk0_icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <COMReference Include="WMPLib.dll">
