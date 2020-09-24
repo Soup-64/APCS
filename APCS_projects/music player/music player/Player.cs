@@ -2,15 +2,14 @@
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using music_player.Properties;
 using NAudio.Wave;
 
 namespace music_player
 {
     public partial class Music : Form
     {
-        private string[] Song_list = (string[])Directory.GetFiles(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic),
-            "*.mp3*",
-            SearchOption.AllDirectories);
+        private string[] Song_list;
 
         private AudioFileReader reader;
         private readonly WaveOutEvent Wave_out = new WaveOutEvent();
@@ -27,6 +26,7 @@ namespace music_player
             Wave_out.PlaybackStopped += new System.EventHandler<NAudio.Wave.StoppedEventArgs>(Song_ended);
 
             InitializeComponent();
+            init_list();
         }
 
         private void Music_Load(object sender, EventArgs e) //fills the list when the form starts
@@ -53,7 +53,7 @@ namespace music_player
             song_img.Image = Properties.Resources.no_cover;
         }
 
-        //button methods
+        //button events
 
         private void Songs_DoubleClick(object sender, EventArgs e) //new song selected
         {            
@@ -136,7 +136,7 @@ namespace music_player
             timer.Stop();
         }
 
-        private void Song_ended(object sender, EventArgs e)
+        private void Song_ended(object sender, EventArgs e) //autoplay
         {
             if (reader.Position == reader.Length)
             {
@@ -145,7 +145,7 @@ namespace music_player
                 {
                     Console.WriteLine("ok");
                     End_audio();
-                    Current_index += 1;
+                    Current_index = Math.Clamp(Current_index + 1, 0, Song_list.Length);
                     Start_audio(Current_index);
                     Update_playing();
                 }));
@@ -171,7 +171,7 @@ namespace music_player
             }
         }
         
-        private void Update_time_seeker(object sender, System.Timers.ElapsedEventArgs e) //make event triggered by timer
+        private void Update_time_seeker(object sender, System.Timers.ElapsedEventArgs e) //updates current time and seeker position
         {
             
             BeginInvoke(new Action(() =>
@@ -180,7 +180,7 @@ namespace music_player
                 {
                     crnt_time.Text = reader.CurrentTime.ToString(@"mm\:ss");
 
-                    if (!seeker.Capture)
+                    if (!seeker.Capture) //if not being dragged
                     {
                         seeker.Value = (int)reader.CurrentTime.TotalSeconds;
                     }
@@ -188,12 +188,55 @@ namespace music_player
             }));
         }
 
-        private void Move_seeker(object sender, EventArgs e)
+        private void Move_seeker(object sender, EventArgs e) //skips to the position that matches the seeker
         {
             if(reader != null && seeker.Value != (int)reader.CurrentTime.TotalSeconds)
             {
                 Console.WriteLine(seeker.Value);
                 reader.Skip(seeker.Value - (int)reader.CurrentTime.TotalSeconds);
+            }
+        }
+
+        private void Song_box_drag_drop(object sender, DragEventArgs e)//gets directories or files
+        {
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            
+            foreach (string file in files)
+            {
+                if (File.GetAttributes(file).HasFlag(FileAttributes.Directory))//if is folder
+                {
+                    if (File.Exists("C:/temp/paths.txt"))
+                    {
+                        using(StreamWriter writer = new StreamWriter("C:/temp/paths.txt"))
+                        {
+                            Console.WriteLine(file);
+                            writer.WriteLine(file);//needs to append, not rewrite
+                        }
+                    }
+                }
+            }
+        }
+
+        private void init_list()
+        {
+            if (File.Exists("C:/temp/paths.txt"))
+            {
+                string contents = File.ReadAllText("C:/temp/paths.txt");
+                Console.WriteLine(contents);
+            }
+            else
+            {
+                File.WriteAllText("C:/temp/paths.txt", null);
+            }
+
+            Song_list = new string[0];
+        }
+
+        private void Song_box_drag_enter(object sender, DragEventArgs e)
+        {
+            if(e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effect = DragDropEffects.Link;
             }
         }
     }

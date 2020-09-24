@@ -45,6 +45,7 @@
             // 
             // Song_box
             // 
+            this.Song_box.AllowDrop = true;
             this.Song_box.FormattingEnabled = true;
             this.Song_box.ItemHeight = 15;
             this.Song_box.Location = new System.Drawing.Point(12, 12);
@@ -52,7 +53,8 @@
             this.Song_box.Name = "Song_box";
             this.Song_box.Size = new System.Drawing.Size(277, 454);
             this.Song_box.TabIndex = 0;
-            this.Song_box.Tag = "cum";
+            this.Song_box.DragDrop += new System.Windows.Forms.DragEventHandler(this.Song_box_drag_drop);
+            this.Song_box.DragEnter += new System.Windows.Forms.DragEventHandler(this.Song_box_drag_enter);
             this.Song_box.DoubleClick += new System.EventHandler(this.Songs_DoubleClick);
             // 
             // seeker
