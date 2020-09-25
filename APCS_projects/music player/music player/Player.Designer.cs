@@ -39,6 +39,7 @@
             this.forward = new System.Windows.Forms.Button();
             this.backward = new System.Windows.Forms.Button();
             this.crnt_Song = new System.Windows.Forms.TextBox();
+            this.shfle = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.seeker)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.song_img)).BeginInit();
             this.SuspendLayout();
@@ -48,7 +49,7 @@
             this.Song_box.AllowDrop = true;
             this.Song_box.FormattingEnabled = true;
             this.Song_box.ItemHeight = 15;
-            this.Song_box.Location = new System.Drawing.Point(12, 12);
+            this.Song_box.Location = new System.Drawing.Point(10, 11);
             this.Song_box.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Song_box.Name = "Song_box";
             this.Song_box.Size = new System.Drawing.Size(277, 454);
@@ -153,13 +154,23 @@
             this.crnt_Song.Size = new System.Drawing.Size(167, 23);
             this.crnt_Song.TabIndex = 6;
             // 
+            // shfle
+            // 
+            this.shfle.Location = new System.Drawing.Point(761, 58);
+            this.shfle.Name = "shfle";
+            this.shfle.Size = new System.Drawing.Size(75, 23);
+            this.shfle.TabIndex = 7;
+            this.shfle.Text = "Shuffle";
+            this.shfle.UseVisualStyleBackColor = true;
+            // 
             // Music
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
-            this.ClientSize = new System.Drawing.Size(930, 500);
+            this.ClientSize = new System.Drawing.Size(851, 500);
+            this.Controls.Add(this.shfle);
             this.Controls.Add(this.crnt_Song);
             this.Controls.Add(this.backward);
             this.Controls.Add(this.forward);
@@ -195,6 +206,7 @@
         private System.Windows.Forms.Button forward;
         private System.Windows.Forms.Button backward;
         private System.Windows.Forms.TextBox crnt_Song;
+        private System.Windows.Forms.Button shfle;
     }
 }
 

@@ -1,8 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-using music_player.Properties;
 using NAudio.Wave;
 
 namespace music_player
@@ -16,7 +16,7 @@ namespace music_player
         private int Current_index = -1;
         private System.Timers.Timer timer = new System.Timers.Timer();
 
-        
+
         //initialization methods
 
         public Music()
@@ -26,41 +26,31 @@ namespace music_player
             Wave_out.PlaybackStopped += new System.EventHandler<NAudio.Wave.StoppedEventArgs>(Song_ended);
 
             InitializeComponent();
-            init_list();
         }
 
         private void Music_Load(object sender, EventArgs e) //fills the list when the form starts
         {
-            
-            Song_box.BeginUpdate();
-            for(int i = 0; i < Song_list.Length; i++)
+            if (!File.Exists("C:/temp/paths.txt"))
             {
-                TagLib.File track = TagLib.File.Create(Song_list[i]);
-                if (track.Tag.Title != null)
-                {
-                    Song_box.Items.Add(track.Tag.Title);
-                }
-                else
-                {
-                    
-                    track.Tag.Title = Path.GetFileName(Song_list[i]).Substring(0, Path.GetFileName(Song_list[i]).IndexOf('.'));
-                    Song_box.Items.Add(track.Tag.Title);
-                    track.Save(); //updates song metadata to include title
-                }
+                File.Create("C:/temp/paths.txt").Dispose();
             }
-            Song_box.EndUpdate();
+
+            Init_list();
+
+            Update_list_box();
 
             song_img.Image = Properties.Resources.no_cover;
+
         }
 
         //button events
 
         private void Songs_DoubleClick(object sender, EventArgs e) //new song selected
-        {            
+        {
 
-            if(Song_box.SelectedIndex != Current_index)
+            if (Song_box.SelectedIndex != Current_index)
             {
-                
+
                 Console.WriteLine(Song_box.Text);
                 Current_index = Song_box.SelectedIndex;
 
@@ -82,14 +72,14 @@ namespace music_player
         {
             if (reader != null)
             {
-                
+
                 Wave_out.Play();
             }
         }
 
         private void Pause_Click(object sender, EventArgs e)
         {
-            if(reader != null)
+            if (reader != null)
             {
                 Wave_out.Pause();
             }
@@ -98,8 +88,8 @@ namespace music_player
         private void Backward_Click(object sender, EventArgs e)
         {
             End_audio();
-            
-            Current_index = Math.Clamp(Current_index-1, 0, Song_list.Length);
+
+            Current_index = Math.Clamp(Current_index - 1, 0, Song_list.Length);
             Start_audio(Current_index);
 
             Update_playing();
@@ -140,7 +130,7 @@ namespace music_player
         {
             if (reader.Position == reader.Length)
             {
-                BeginInvoke(new Action(() => 
+                BeginInvoke(new Action(() =>
                 //I really don't know exactly what this does but it fixes a threading issue with the event interacting with the ui method
                 {
                     Console.WriteLine("ok");
@@ -149,10 +139,10 @@ namespace music_player
                     Start_audio(Current_index);
                     Update_playing();
                 }));
-                
+
             }
         }
-        
+
         //ui update methods
 
         private void Update_playing()
@@ -170,10 +160,10 @@ namespace music_player
                 song_img.Image = Properties.Resources.no_cover;
             }
         }
-        
+
         private void Update_time_seeker(object sender, System.Timers.ElapsedEventArgs e) //updates current time and seeker position
         {
-            
+
             BeginInvoke(new Action(() =>
             {
                 if (reader != null)
@@ -190,7 +180,7 @@ namespace music_player
 
         private void Move_seeker(object sender, EventArgs e) //skips to the position that matches the seeker
         {
-            if(reader != null && seeker.Value != (int)reader.CurrentTime.TotalSeconds)
+            if (reader != null && seeker.Value != (int)reader.CurrentTime.TotalSeconds)
             {
                 Console.WriteLine(seeker.Value);
                 reader.Skip(seeker.Value - (int)reader.CurrentTime.TotalSeconds);
@@ -200,44 +190,83 @@ namespace music_player
         private void Song_box_drag_drop(object sender, DragEventArgs e)//gets directories or files
         {
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
-            
+
+            string contents;
+
             foreach (string file in files)
             {
                 if (File.GetAttributes(file).HasFlag(FileAttributes.Directory))//if is folder
                 {
-                    if (File.Exists("C:/temp/paths.txt"))
+                    contents = File.ReadAllText("C:/temp/paths.txt");
+
+                    if (!contents.Contains(file.Replace('\\', '/')))
                     {
-                        using(StreamWriter writer = new StreamWriter("C:/temp/paths.txt"))
-                        {
-                            Console.WriteLine(file);
-                            writer.WriteLine(file);//needs to append, not rewrite
-                        }
+
+                        File.AppendAllText("C:/temp/paths.txt", file.Replace('\\', '/') + "\n"); //duplicate check
+                                                                                                 //method also accounts for the file not existing
+
+                        Init_list();
+
+                        Update_list_box();
                     }
+
                 }
             }
         }
 
-        private void init_list()
-        {
-            if (File.Exists("C:/temp/paths.txt"))
-            {
-                string contents = File.ReadAllText("C:/temp/paths.txt");
-                Console.WriteLine(contents);
-            }
-            else
-            {
-                File.WriteAllText("C:/temp/paths.txt", null);
-            }
-
-            Song_list = new string[0];
-        }
-
         private void Song_box_drag_enter(object sender, DragEventArgs e)
         {
-            if(e.Data.GetDataPresent(DataFormats.FileDrop))
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
                 e.Effect = DragDropEffects.Link;
             }
         }
+
+        private void Init_list()
+        {
+            if (File.Exists("C:/temp/paths.txt"))
+            {
+                string[] contents = File.ReadAllText("C:/temp/paths.txt").Split("\n");
+                List<string> directory_builder = new List<string>();
+
+                for (int i = 0; i < contents.Length - 1; i++)//intentional since last entry is empty bc of the \n 
+                {
+                    foreach (string item in Directory.GetFiles(contents[i], "*.mp3*", SearchOption.AllDirectories))
+                    {
+                        directory_builder.Add(item);
+                        Console.WriteLine(item);
+                    }
+                }
+                Song_list = directory_builder.ToArray();
+            }
+        }
+
+        private void Update_list_box()
+        {
+            if (Song_list != null)
+            {
+
+                Song_box.BeginUpdate();
+                Song_box.Items.Clear();
+
+                for (int i = 0; i < Song_list.Length; i++)
+                {
+                    TagLib.File track = TagLib.File.Create(Song_list[i]);
+                    if (track.Tag.Title != null)
+                    {
+                        Song_box.Items.Add(track.Tag.Title);
+                    }
+                    else
+                    {
+
+                        track.Tag.Title = Path.GetFileName(Song_list[i]).Substring(0, Path.GetFileName(Song_list[i]).IndexOf('.'));
+                        Song_box.Items.Add(track.Tag.Title);
+                        track.Save(); //updates song metadata to include title
+                    }
+                }
+                Song_box.EndUpdate();
+            }
+        }
+
     }
 }
