@@ -1,5 +1,4 @@
 C:\Users\Owner\Documents\GitHub\APCS\APCS_projects\music player\music player\bin\Release\netcoreapp3.1\music player.exe
-C:\Users\Owner\Documents\GitHub\APCS\APCS_projects\music player\music player\bin\Release\netcoreapp3.1\The Microsoft Sound.mp3
 C:\Users\Owner\Documents\GitHub\APCS\APCS_projects\music player\music player\bin\Release\netcoreapp3.1\music player.deps.json
 C:\Users\Owner\Documents\GitHub\APCS\APCS_projects\music player\music player\bin\Release\netcoreapp3.1\music player.runtimeconfig.json
 C:\Users\Owner\Documents\GitHub\APCS\APCS_projects\music player\music player\bin\Release\netcoreapp3.1\music player.runtimeconfig.dev.json

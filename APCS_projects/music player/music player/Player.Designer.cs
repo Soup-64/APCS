@@ -39,7 +39,8 @@
             this.forward = new System.Windows.Forms.Button();
             this.backward = new System.Windows.Forms.Button();
             this.crnt_Song = new System.Windows.Forms.TextBox();
-            this.shfle = new System.Windows.Forms.Button();
+            this.Add_playlist = new System.Windows.Forms.Button();
+            this.Remove_playlist = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.seeker)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.song_img)).BeginInit();
             this.SuspendLayout();
@@ -49,7 +50,7 @@
             this.Song_box.AllowDrop = true;
             this.Song_box.FormattingEnabled = true;
             this.Song_box.ItemHeight = 15;
-            this.Song_box.Location = new System.Drawing.Point(10, 11);
+            this.Song_box.Location = new System.Drawing.Point(10, 34);
             this.Song_box.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Song_box.Name = "Song_box";
             this.Song_box.Size = new System.Drawing.Size(277, 454);
@@ -154,14 +155,23 @@
             this.crnt_Song.Size = new System.Drawing.Size(167, 23);
             this.crnt_Song.TabIndex = 6;
             // 
-            // shfle
+            // Add_playlist
             // 
-            this.shfle.Location = new System.Drawing.Point(761, 58);
-            this.shfle.Name = "shfle";
-            this.shfle.Size = new System.Drawing.Size(75, 23);
-            this.shfle.TabIndex = 7;
-            this.shfle.Text = "Shuffle";
-            this.shfle.UseVisualStyleBackColor = true;
+            this.Add_playlist.Location = new System.Drawing.Point(10, 5);
+            this.Add_playlist.Name = "Add_playlist";
+            this.Add_playlist.Size = new System.Drawing.Size(75, 23);
+            this.Add_playlist.TabIndex = 7;
+            this.Add_playlist.Text = "Add";
+            this.Add_playlist.UseVisualStyleBackColor = true;
+            // 
+            // Remove_playlist
+            // 
+            this.Remove_playlist.Location = new System.Drawing.Point(91, 5);
+            this.Remove_playlist.Name = "Remove_playlist";
+            this.Remove_playlist.Size = new System.Drawing.Size(75, 23);
+            this.Remove_playlist.TabIndex = 8;
+            this.Remove_playlist.Text = "Remove";
+            this.Remove_playlist.UseVisualStyleBackColor = true;
             // 
             // Music
             // 
@@ -170,7 +180,8 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.ClientSize = new System.Drawing.Size(851, 500);
-            this.Controls.Add(this.shfle);
+            this.Controls.Add(this.Remove_playlist);
+            this.Controls.Add(this.Add_playlist);
             this.Controls.Add(this.crnt_Song);
             this.Controls.Add(this.backward);
             this.Controls.Add(this.forward);
@@ -206,7 +217,8 @@
         private System.Windows.Forms.Button forward;
         private System.Windows.Forms.Button backward;
         private System.Windows.Forms.TextBox crnt_Song;
-        private System.Windows.Forms.Button shfle;
+        private System.Windows.Forms.Button Add_playlist;
+        private System.Windows.Forms.Button Remove_playlist;
     }
 }
 
