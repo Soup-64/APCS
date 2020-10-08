@@ -6,10 +6,6 @@ C:\Users\Owner\Documents\GitHub\APCS\APCS_projects\music player\music player\bin
 C:\Users\Owner\Documents\GitHub\APCS\APCS_projects\music player\music player\bin\Release\netcoreapp3.1\music player.pdb
 C:\Users\Owner\Documents\GitHub\APCS\APCS_projects\music player\music player\bin\Release\netcoreapp3.1\NAudio.dll
 C:\Users\Owner\Documents\GitHub\APCS\APCS_projects\music player\music player\bin\Release\netcoreapp3.1\TagLibSharp.dll
-C:\Users\Owner\Documents\GitHub\APCS\APCS_projects\music player\music player\bin\Release\netcoreapp3.1\Interop.WMPLib.dll
-C:\Users\Owner\Documents\GitHub\APCS\APCS_projects\music player\music player\obj\Release\netcoreapp3.1\music player.csprojAssemblyReference.cache
-C:\Users\Owner\Documents\GitHub\APCS\APCS_projects\music player\music player\obj\Release\netcoreapp3.1\Interop.WMPLib.dll
-C:\Users\Owner\Documents\GitHub\APCS\APCS_projects\music player\music player\obj\Release\netcoreapp3.1\music player.csproj.ResolveComReference.cache
 C:\Users\Owner\Documents\GitHub\APCS\APCS_projects\music player\music player\obj\Release\netcoreapp3.1\music_player.Music.resources
 C:\Users\Owner\Documents\GitHub\APCS\APCS_projects\music player\music player\obj\Release\netcoreapp3.1\music_player.Properties.Resources.resources
 C:\Users\Owner\Documents\GitHub\APCS\APCS_projects\music player\music player\obj\Release\netcoreapp3.1\music player.csproj.GenerateResource.cache

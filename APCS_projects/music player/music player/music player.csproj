@@ -8,16 +8,6 @@
     <ApplicationIcon>Resources\clipart_info_transparent_music_note_clip_art_11563275292nsxmd5ksee_uk0_icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <COMReference Include="WMPLib.dll">
-      <Guid>6bf52a50-394a-11d3-b153-00c04f79faa6</Guid>
-      <VersionMajor>1</VersionMajor>
-      <VersionMinor>0</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>tlbimp</WrapperTool>
-      <Isolated>false</Isolated>
-    </COMReference>
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="TagLibSharp" Version="2.2.0" />
     <PackageReference Include="NAudio" Version="1.10.0" />
   </ItemGroup>
@@ -38,14 +28,5 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <None Update="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <None Update="TADA.mp3">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 </Project>

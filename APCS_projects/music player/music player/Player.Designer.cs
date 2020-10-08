@@ -41,6 +41,10 @@
             this.crnt_Song = new System.Windows.Forms.TextBox();
             this.Add_playlist = new System.Windows.Forms.Button();
             this.Remove_playlist = new System.Windows.Forms.Button();
+            this.Back = new System.Windows.Forms.Button();
+            this.Rename_playlist = new System.Windows.Forms.Button();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.name_input = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.seeker)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.song_img)).BeginInit();
             this.SuspendLayout();
@@ -50,14 +54,14 @@
             this.Song_box.AllowDrop = true;
             this.Song_box.FormattingEnabled = true;
             this.Song_box.ItemHeight = 15;
-            this.Song_box.Location = new System.Drawing.Point(10, 34);
+            this.Song_box.Location = new System.Drawing.Point(10, 31);
             this.Song_box.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Song_box.Name = "Song_box";
-            this.Song_box.Size = new System.Drawing.Size(277, 454);
+            this.Song_box.Size = new System.Drawing.Size(277, 499);
             this.Song_box.TabIndex = 0;
             this.Song_box.DragDrop += new System.Windows.Forms.DragEventHandler(this.Song_box_drag_drop);
             this.Song_box.DragEnter += new System.Windows.Forms.DragEventHandler(this.Song_box_drag_enter);
-            this.Song_box.DoubleClick += new System.EventHandler(this.Songs_DoubleClick);
+            this.Song_box.DoubleClick += new System.EventHandler(this.List_DoubleClick);
             // 
             // seeker
             // 
@@ -94,7 +98,7 @@
             // song_img
             // 
             this.song_img.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.song_img.Location = new System.Drawing.Point(380, 12);
+            this.song_img.Location = new System.Drawing.Point(380, 32);
             this.song_img.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.song_img.Name = "song_img";
             this.song_img.Size = new System.Drawing.Size(350, 346);
@@ -111,7 +115,7 @@
             this.play_Btn.TabIndex = 5;
             this.play_Btn.Text = "Play";
             this.play_Btn.UseVisualStyleBackColor = true;
-            this.play_Btn.Click += new System.EventHandler(this.Play_Click);
+            this.play_Btn.Click += new System.EventHandler(this.Play_Song);
             // 
             // pause_Btn
             // 
@@ -122,7 +126,7 @@
             this.pause_Btn.TabIndex = 5;
             this.pause_Btn.Text = "Pause";
             this.pause_Btn.UseVisualStyleBackColor = true;
-            this.pause_Btn.Click += new System.EventHandler(this.Pause_Click);
+            this.pause_Btn.Click += new System.EventHandler(this.Pause_Song);
             // 
             // forward
             // 
@@ -133,7 +137,7 @@
             this.forward.TabIndex = 5;
             this.forward.Text = "Forward";
             this.forward.UseVisualStyleBackColor = true;
-            this.forward.Click += new System.EventHandler(this.Forward_Click);
+            this.forward.Click += new System.EventHandler(this.Skip_backward);
             // 
             // backward
             // 
@@ -144,7 +148,7 @@
             this.backward.TabIndex = 5;
             this.backward.Text = "Backward";
             this.backward.UseVisualStyleBackColor = true;
-            this.backward.Click += new System.EventHandler(this.Backward_Click);
+            this.backward.Click += new System.EventHandler(this.Skip_forward);
             // 
             // crnt_Song
             // 
@@ -157,21 +161,51 @@
             // 
             // Add_playlist
             // 
-            this.Add_playlist.Location = new System.Drawing.Point(10, 5);
+            this.Add_playlist.Location = new System.Drawing.Point(10, 2);
             this.Add_playlist.Name = "Add_playlist";
             this.Add_playlist.Size = new System.Drawing.Size(75, 23);
             this.Add_playlist.TabIndex = 7;
             this.Add_playlist.Text = "Add";
             this.Add_playlist.UseVisualStyleBackColor = true;
+            this.Add_playlist.Click += new System.EventHandler(this.Create_playlist);
             // 
             // Remove_playlist
             // 
-            this.Remove_playlist.Location = new System.Drawing.Point(91, 5);
+            this.Remove_playlist.Location = new System.Drawing.Point(172, 2);
             this.Remove_playlist.Name = "Remove_playlist";
             this.Remove_playlist.Size = new System.Drawing.Size(75, 23);
             this.Remove_playlist.TabIndex = 8;
             this.Remove_playlist.Text = "Remove";
             this.Remove_playlist.UseVisualStyleBackColor = true;
+            this.Remove_playlist.Click += new System.EventHandler(this.Delete_playlist);
+            // 
+            // Back
+            // 
+            this.Back.Enabled = false;
+            this.Back.Location = new System.Drawing.Point(91, 2);
+            this.Back.Name = "Back";
+            this.Back.Size = new System.Drawing.Size(75, 23);
+            this.Back.TabIndex = 9;
+            this.Back.Text = "Back";
+            this.Back.UseVisualStyleBackColor = true;
+            this.Back.Click += new System.EventHandler(this.Back_Click);
+            // 
+            // Rename_playlist
+            // 
+            this.Rename_playlist.Location = new System.Drawing.Point(253, 2);
+            this.Rename_playlist.Name = "Rename_playlist";
+            this.Rename_playlist.Size = new System.Drawing.Size(75, 23);
+            this.Rename_playlist.TabIndex = 10;
+            this.Rename_playlist.Text = "Rename";
+            this.Rename_playlist.UseVisualStyleBackColor = true;
+            this.Rename_playlist.Click += new System.EventHandler(this.Rename_Click);
+            // 
+            // name_input
+            // 
+            this.name_input.Location = new System.Drawing.Point(334, 3);
+            this.name_input.Name = "name_input";
+            this.name_input.Size = new System.Drawing.Size(196, 23);
+            this.name_input.TabIndex = 11;
             // 
             // Music
             // 
@@ -179,7 +213,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
-            this.ClientSize = new System.Drawing.Size(851, 500);
+            this.ClientSize = new System.Drawing.Size(851, 532);
+            this.Controls.Add(this.name_input);
+            this.Controls.Add(this.Rename_playlist);
+            this.Controls.Add(this.Back);
             this.Controls.Add(this.Remove_playlist);
             this.Controls.Add(this.Add_playlist);
             this.Controls.Add(this.crnt_Song);
@@ -197,7 +234,6 @@
             this.MinimumSize = new System.Drawing.Size(500, 39);
             this.Name = "Music";
             this.Text = "Music Player";
-            this.Load += new System.EventHandler(this.Music_Load);
             ((System.ComponentModel.ISupportInitialize)(this.seeker)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.song_img)).EndInit();
             this.ResumeLayout(false);
@@ -219,6 +255,10 @@
         private System.Windows.Forms.TextBox crnt_Song;
         private System.Windows.Forms.Button Add_playlist;
         private System.Windows.Forms.Button Remove_playlist;
+        private System.Windows.Forms.Button Back;
+        private System.Windows.Forms.Button Rename_playlist;
+        private System.Windows.Forms.ColorDialog colorDialog1;
+        private System.Windows.Forms.TextBox name_input;
     }
 }
 

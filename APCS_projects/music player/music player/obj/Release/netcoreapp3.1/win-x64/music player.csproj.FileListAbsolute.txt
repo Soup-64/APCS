@@ -1,5 +1,4 @@
 C:\Users\Owner\Documents\GitHub\APCS\APCS_projects\music player\music player\bin\Release\netcoreapp3.1\win-x64\music player.exe
-C:\Users\Owner\Documents\GitHub\APCS\APCS_projects\music player\music player\bin\Release\netcoreapp3.1\win-x64\The Microsoft Sound.mp3
 C:\Users\Owner\Documents\GitHub\APCS\APCS_projects\music player\music player\bin\Release\netcoreapp3.1\win-x64\music player.deps.json
 C:\Users\Owner\Documents\GitHub\APCS\APCS_projects\music player\music player\bin\Release\netcoreapp3.1\win-x64\music player.runtimeconfig.json
 C:\Users\Owner\Documents\GitHub\APCS\APCS_projects\music player\music player\bin\Release\netcoreapp3.1\win-x64\music player.runtimeconfig.dev.json
@@ -501,9 +500,6 @@ C:\Users\Owner\Documents\GitHub\APCS\APCS_projects\music player\music player\bin
 C:\Users\Owner\Documents\GitHub\APCS\APCS_projects\music player\music player\bin\Release\netcoreapp3.1\win-x64\PresentationNative_cor3.dll
 C:\Users\Owner\Documents\GitHub\APCS\APCS_projects\music player\music player\bin\Release\netcoreapp3.1\win-x64\vcruntime140_cor3.dll
 C:\Users\Owner\Documents\GitHub\APCS\APCS_projects\music player\music player\bin\Release\netcoreapp3.1\win-x64\wpfgfx_cor3.dll
-C:\Users\Owner\Documents\GitHub\APCS\APCS_projects\music player\music player\bin\Release\netcoreapp3.1\win-x64\Interop.WMPLib.dll
-C:\Users\Owner\Documents\GitHub\APCS\APCS_projects\music player\music player\obj\Release\netcoreapp3.1\win-x64\Interop.WMPLib.dll
-C:\Users\Owner\Documents\GitHub\APCS\APCS_projects\music player\music player\obj\Release\netcoreapp3.1\win-x64\music player.csproj.ResolveComReference.cache
 C:\Users\Owner\Documents\GitHub\APCS\APCS_projects\music player\music player\obj\Release\netcoreapp3.1\win-x64\music_player.Music.resources
 C:\Users\Owner\Documents\GitHub\APCS\APCS_projects\music player\music player\obj\Release\netcoreapp3.1\win-x64\music_player.Properties.Resources.resources
 C:\Users\Owner\Documents\GitHub\APCS\APCS_projects\music player\music player\obj\Release\netcoreapp3.1\win-x64\music player.csproj.GenerateResource.cache
@@ -514,3 +510,4 @@ C:\Users\Owner\Documents\GitHub\APCS\APCS_projects\music player\music player\obj
 C:\Users\Owner\Documents\GitHub\APCS\APCS_projects\music player\music player\obj\Release\netcoreapp3.1\win-x64\music player.dll
 C:\Users\Owner\Documents\GitHub\APCS\APCS_projects\music player\music player\obj\Release\netcoreapp3.1\win-x64\music player.pdb
 C:\Users\Owner\Documents\GitHub\APCS\APCS_projects\music player\music player\obj\Release\netcoreapp3.1\win-x64\music player.genruntimeconfig.cache
+C:\Users\Owner\Documents\GitHub\APCS\APCS_projects\music player\music player\obj\Release\netcoreapp3.1\win-x64\music player.csprojAssemblyReference.cache
