@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <RootNamespace>Graphics</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Eto.Forms" Version="2.5.11" />
+    <PackageReference Include="Eto.Platform.Gtk" Version="2.5.11" />
+  </ItemGroup>
+</Project>
