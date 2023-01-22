@@ -1,4 +1,4 @@
 # APCS
-Collection of my apcs projects
-Please note that lan chat is zipped up as github was having trouble uploading the entire project, and also keep in mind that some of these programs are here for archival purposes and may not have the cleanest code, and are likely not production ready.
-Also note that I am using linux at this time and I am therefore unable to test if the music player program still compiles as intended as it is the only program that is entirely windows-only here.
+- Collection of my older high school projects
+- These are older programs I wrote in high school while doing an independent study in computer science with my previous AP computer science 'A' teacher.
+- These notably vary in quality, and I'm keeping this public as an archive of what I've done in the past in my free time, since most of my more recent work is in class assignments that are far less interesting.
